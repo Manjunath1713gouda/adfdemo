@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "databeliadf"
 		},
-		"AzureSqlDatabase1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
-		},
 		"AzureDataLakeStorageLS_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://databeliadls1.dfs.core.windows.net/"
@@ -26,6 +22,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adminmanju"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvalutdemo13.vault.azure.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -54,11 +54,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureSqlDatabase1_password": {
-						"value": "[parameters('AzureSqlDatabase1_password')]"
-					},
 					"AzureDataLakeStorageLS_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorageLS_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 					},
 					"AzureSqlDatabase1_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"

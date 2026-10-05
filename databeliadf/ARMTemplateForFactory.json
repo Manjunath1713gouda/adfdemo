@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "databeliadf"
 		},
-		"AzureSqlDatabase1_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
-		},
 		"AzureDataLakeStorageLS_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://databeliadls1.dfs.core.windows.net/"
@@ -26,6 +22,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adminmanju"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvalutdemo13.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -1308,9 +1308,28 @@
 					"authenticationType": "SQL",
 					"userName": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]",
 					"password": {
-						"type": "SecureString",
-						"value": "[parameters('AzureSqlDatabase1_password')]"
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "sqldbpass"
 					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
