@@ -1,0 +1,21 @@
+{
+	"name": "databeliadf",
+	"properties": {
+		"globalParameters": {
+			"email_recepient": {
+				"type": "string",
+				"value": "mnathtos@gmail.com"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c302c72f-8ba3-4991-a90a-861a35114638",
+		"tenantId": "f78e592b-4003-4ebf-b019-3c5fe75de21d"
+	}
+}
